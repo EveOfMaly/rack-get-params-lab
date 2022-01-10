@@ -7,6 +7,8 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
+
+
    
 
     if req.path.match(/items/) #if the route is /items write the items 
@@ -29,6 +31,7 @@ class Application
       resp.write add_item(search_term) #if search result is an item from the item array add item to the cart else message
     else
       resp.write "Path Not Found"
+      resp.status = 404
     end
 
     resp.finish
